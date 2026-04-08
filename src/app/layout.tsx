@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Space — Solar system explorer",
-  description: "Interactive 3D solar system built with Next.js and React Three Fiber.",
+  title: "Наша солнечная система",
+  description:
+    "Интерактивная 3D-модель Солнечной системы: орбиты, факты о планетах и упрощённая визуализация.",
 };
 
 export default function RootLayout({
@@ -24,10 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ru"
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <TooltipProvider delay={200}>{children}</TooltipProvider>
+      </body>
     </html>
   );
 }
